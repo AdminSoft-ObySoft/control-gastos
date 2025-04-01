@@ -1,0 +1,161 @@
+
+
+
+
+<div class="h-full flex flex-col overflow-hidden">
+  <div class="h-fit gap-y-10 gap-x-6">
+    <section class="bg-white pb-3 antialiased">
+      <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+        <div class="mx-auto max-w-7xl">
+          <div class="flex justify-between">
+            <h2 class="text-xl font-semibold text-gray-900 sm:text-2xl">Registro diario</h2>
+            <div class="flex flex-col md:flex-row gap-2 md:gap-12">
+              <div class="h-fit flex gap-2 pb-2 justify-end">
+                <button type="button" (click)="OpenModalValores()" matTooltip="Json" matTooltipPosition="above" class="border border-gray-400 rounded-md p-0.5 hover:bg-slate-100">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M20 16v-8l3 8v-8" />
+                    <path d="M15 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2z" />
+                    <path d="M1 8h3v6.5a1.5 1.5 0 0 1 -3 0v-.5" />
+                    <path d="M7 15a1 1 0 0 0 1 1h1a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-1a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1h1a1 1 0 0 1 1 1" />
+                  </svg>
+                </button>
+                <button type="button" (click)="navigateListaProveedor()" matTooltip="Regresar" matTooltipPosition="above" class="border border-gray-400 rounded-md p-0.5 hover:bg-slate-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-400 size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                  </svg>
+                </button>
+                <button type="button" (click)="navigateNuevo()" matTooltip="Nuevo" matTooltipPosition="above" class="border border-gray-400 rounded-md p-0.5 hover:bg-slate-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-400 size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </button>
+
+                <button type="button" (click)="saveProveedor()" matTooltip="Guardar" matTooltipPosition="above" class="border border-gray-400 rounded-md p-0.5 hover:bg-slate-100">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                    <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M14 4l0 4l-6 0l0 -4" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 lg:flex lg:items-start lg:gap-12">
+            <form #regForm="ngForm" [formGroup]="formMovDiarios" autocomplete="off" id="" class="w-full bg-white shadow-sm lg:max-w-7xl">
+              <div class="grid grid-cols-1 gap-1 md:gap-4 md:grid-cols-3 rounded-lg border border-gray-200 p-4 sm:p-6">
+                <div class="">
+                  <label for="fecha" class="mb-2 block text-xs font-medium text-gray-900">Fecha * </label>
+                  <input type="date" id="fecha" formControlName="fecha" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-[0.52rem] text-xs text-gray-900 focus:border-primary-500 focus:ring-primary-500   " placeholder="xxxx-xxxx-xxxx-xxxx"/>
+                  @if (hasRequiredError('fecha')) {
+                    <mat-error style="font-size: 10px; line-height: 20px;" class="text-red-400">Campo obligatorio. Ejemplo: Vicente</mat-error>
+                  }
+                </div>
+                <!-- <div class="">
+                  <label for="tipo" class="mb-2 block text-xs font-medium text-gray-900">Tipo de viaje</label>
+                  <div class="flex gap-1 p-[0.52rem] rounded-lg border border-gray-300">
+                    <div class="flex items-center me-4">
+                      <input id="red-radio" type="radio" formControlName="tipo" value="VIAJE" name="tipo" class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300">
+                      <label for="red-radio" class="ms-2 text-xs font-normal text-gray-900">Camaronera</label>
+                    </div>
+                    <div class="flex items-center me-4">
+                      <input id="green-radio" type="radio" formControlName="tipo" value="TOUR" name="tipo" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300">
+                      <label for="green-radio" class="ms-2 text-xs font-normal text-gray-900">Tour</label>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="flex-grow mb-1 grid grid-cols-1 gap-6 xl:grid-cols-3 overflow-hidden">
+    <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-3">
+      <div class="max-h-full w-full flex flex-col mx-auto max-w-screen-xl rounded-lg border border-gray-200">
+        <div class="overflow-x-auto overflow-auto md:flex-grow max-w-7xl scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-300 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+          <form [formGroup]="formMovDiarios" id="formMovDiarios" class="" autocomplete="off">
+            <div class="w-full" id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white " data-inactive-classes="text-gray-500">
+              <div [ngClass]="{'bg-gray-100':isOpen[0]}" class="hover:bg-slate-50">
+                <h2 id="accordion-flush-heading-1" class="focus:border-2 focus:border-gray-900 focus:bg-gray-900">
+                  <button type="button" (click)="toggleAccordion(0)" class="text-2xl flex items-center justify-between w-full py-5 px-4 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                    <span>Viajes</span>
+                    <div class="flex gap-2">
+                      @if (formControls.includes('direcciones')) {
+                        <div class="flex relative">
+                          <span class="border text-xs bg-red-50 text-red-800 py-1 px-2 rounded-md border-red-400">
+                            Revisar que esten llenos todos los items
+                          </span>
+                          <div class="absolute -right-1 -top-1">
+                            <span class="relative flex h-3 w-3">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                            </span>
+                          </div>
+                        </div>
+                      }
+                      @if (isOpen[0]) {
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4 font-medium">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                        </svg>
+                      } @else {
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4 font-medium">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      }
+                    </div>
+                  </button>
+                </h2>
+              </div>
+              <div id="accordion-flush-body-1" [ngClass]="{'hidden':!isOpen[0]}" aria-labelledby="accordion-flush-heading-1">
+                <div class="py-5 px-4 border-b border-gray-200">
+                  <app-viajes/>
+                </div>
+              </div>
+              <div [ngClass]="{'bg-gray-100':isOpen[1]}" class="hover:bg-slate-50">
+                <h2 class="" id="accordion-flush-heading-1">
+                  <button type="button" (click)="toggleAccordion(1)" class="text-2xl flex items-center justify-between w-full py-5 px-4 font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                    <span>Gastos</span>
+                    <div class="flex gap-2">
+                      @if (formControls.includes('plandecuentas')) {
+                        <div class="flex relative">
+                          <span class="border text-xs bg-red-50 text-red-800 py-1 px-2 rounded-md border-red-400">
+                            Revisar que esten llenos todos los items
+                          </span>
+                          <div class="absolute -right-1 -top-1">
+                            <span class="relative flex h-3 w-3">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                            </span>
+                          </div>
+                        </div>
+                      }
+                      @if (isOpen[1]) {
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4 font-medium">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                        </svg>
+                      } @else {
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4 font-medium">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      }
+                    </div>
+                  </button>
+                </h2>
+              </div>
+              <div id="accordion-flush-body-1" [ngClass]="{'hidden':!isOpen[1]}" aria-labelledby="accordion-flush-heading-1">
+                  <div class="py-5 px-4 border-b border-gray-200">
+                      <app-otros-gastos/>
+                      <!-- GASTOS ADICIONALES -->
+                  </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
